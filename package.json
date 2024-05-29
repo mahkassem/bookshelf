@@ -1,0 +1,19 @@
+{
+  "name": "bookshelf",
+  "version": "1.0.0",
+  "description": "Digital Bookshelf App",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs",
+    "Reactjs",
+    "MongoDB",
+    "Express"
+  ],
+  "author": "Mahmoud Kassem",
+  "license": "ISC"
+}
