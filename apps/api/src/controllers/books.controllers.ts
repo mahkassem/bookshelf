@@ -34,7 +34,13 @@ class BookController {
     res: Response
   ): Promise<void> {
     try {
-      const term = req.query.term as string;
+      let term = req.query.term as string;
+      term = term.trim(); // Remove leading and trailing white spaces
+      // Check if term is empty
+      if (!term) {
+        res.status(400).json({ error: "Search term is required" });
+        return;
+      }
       const books = await BookModel.searchBookByTitle(term);
       res.status(200).json(books);
     } catch (error: unknown) {

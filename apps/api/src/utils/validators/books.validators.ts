@@ -16,7 +16,7 @@ export const addBookValidationRules = async (
     .isString()
     .withMessage('Title must be a string')
     .custom(async (value: string) => {
-      const book = await BookModel.getBookByTitle(value);
+      const book = await BookModel.getBookByTitle(value.toLowerCase());
       if (book) {
         return Promise.reject('Title already exists');
       }

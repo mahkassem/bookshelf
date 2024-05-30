@@ -1,22 +1,17 @@
-import dotenv from 'dotenv';
-
-// Initialize configuration
-dotenv.config();
-
-const debug = process.env.APP_DEBUG == 'true';
+import { APP_DEBUG } from "../config/app.config";
 
 // Logger class
 class Logger {
   // Log info message
   info(message: string) {
-    if (debug) {
+    if (APP_DEBUG) {
       console.log(`[INFO] ${message}`);
     }
   }
 
   // Log error message
   error(error: string | unknown) {
-    if (debug) {
+    if (APP_DEBUG) {
       // convert error to string
       // stringify error;
       const type = typeof error == 'string' ? 'string' : 'object';

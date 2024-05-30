@@ -41,7 +41,8 @@ class BookModel {
   // Get book by title
   async getBookByTitle(title: string): Promise<Book | null> {
     try {
-      const book = await db.collection<Book>(this.collection).findOne({ title });
+      // case insensitive find
+      const book = await db.collection<Book>(this.collection).findOne({ title: { $regex: new RegExp(`^${title}$`, 'i') } });
       return book;
     } catch (error: unknown) {
       logger.error(error);
